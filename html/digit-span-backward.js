@@ -563,6 +563,7 @@ function RecallRoutineBegin(snapshot) {
     // update component parameters for each repeat
     psychoJS.eventManager.clearKeys();
     inputText = '';
+    inputDisplay.setText(inputText);
     // keep track of which components have finished
     RecallComponents = [];
     RecallComponents.push(recall_text);
@@ -682,8 +683,9 @@ function RecallRoutineEnd(snapshot) {
     psychoJS.experiment.addData("response", inputText);
     
     allResponses.push(correct);
-    inputDisplay.setText(inputText);
     inputText = '';
+    inputDisplay.setText(inputText);
+    
     // the Routine "Recall" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
