@@ -178,12 +178,12 @@
         <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="curr_digit = '';" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="curr_digit = '';&amp;#10;digits = '';" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="// Convert sequence to list&amp;#10;nList = digits.toString().split('').map((x)=&gt;Number(x));&amp;#10;curr_digit = '';&amp;#10;pres_text.setText(curr_digit);&amp;#10;" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="# Convert sequence to list&amp;#10;nList = list(str(digits))&amp;#10;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="JS" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each JS Frame" updates="constant" val="// Convert time to a list index&amp;#10;i = Math.floor(t-1);&amp;#10;&amp;#10;pres_text.setText(curr_digit);&amp;#10;&amp;#10;// Index current number in the list&amp;#10;// or end routine if all numbers presented&amp;#10;if (i === nList.length) {&amp;#10;    continueRoutine = false;&amp;#10;} else {&amp;#10;    curr_digit = nList[i];&amp;#10;}&amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="// Convert time to a list index&amp;#10;if (t &gt;= 1) {&amp;#10;    i = Math.floor(t-1);&amp;#10;    pres_text.setText(curr_digit);&amp;#10;&amp;#10;    // Index current number in the list&amp;#10;    // or end routine if all numbers presented&amp;#10;    if (i === nList.length) {&amp;#10;        continueRoutine = false;&amp;#10;    } else {&amp;#10;        curr_digit = nList[i];&amp;#10;    }&amp;#10;}&amp;#10;&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Routine" updates="constant" val="pres_text.text = ''" valType="extendedCode"/>

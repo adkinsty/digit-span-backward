@@ -95,6 +95,7 @@ var PresentationClock;
 var fixation;
 var pres_text;
 var curr_digit;
+var digits;
 var RecallClock;
 var recall_text;
 var inputDisplay;
@@ -151,6 +152,7 @@ function experimentInit() {
   });
   
   curr_digit = '';
+  digits = '';
   // Initialize components for Routine "Recall"
   RecallClock = new util.Clock();
   recall_text = new visual.TextStim({
@@ -491,17 +493,20 @@ function PresentationRoutineEachFrame(snapshot) {
     }
 
     // Convert time to a list index
-    i = Math.floor(t-1);
+    if (t >= 1) {
+        i = Math.floor(t-1);
+        pres_text.setText(curr_digit);
     
-    pres_text.setText(curr_digit);
-    
-    // Index current number in the list
-    // or end routine if all numbers presented
-    if (i === nList.length) {
-        continueRoutine = false;
-    } else {
-        curr_digit = nList[i];
+        // Index current number in the list
+        // or end routine if all numbers presented
+        if (i === nList.length) {
+            continueRoutine = false;
+        } else {
+            curr_digit = nList[i];
+        }
     }
+    
+    
     
     
     // check for quit (typically the Esc key)
