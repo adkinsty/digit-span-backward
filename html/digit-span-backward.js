@@ -96,10 +96,10 @@ var fixation;
 var pres_text;
 var RecallClock;
 var recall_text;
+var inputDisplay;
 var allResponses;
 var inputText;
 var reverseString;
-var inputDisplay;
 var FeedbackClock;
 var feedback_text;
 var rngClock;
@@ -162,6 +162,17 @@ function experimentInit() {
     depth: 0.0 
   });
   
+  inputDisplay = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'inputDisplay',
+    text: '',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('white'),  opacity: 1,
+    depth: -1.0 
+  });
+  
   // Store responses
   allResponses = []
   inputText = '';
@@ -172,17 +183,6 @@ function experimentInit() {
       var joinArray = reverseArray.join("");
       return joinArray;
   }
-  inputDisplay = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'inputDisplay',
-    text: '',
-    font: 'Arial',
-    units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0,
-    color: new util.Color('white'),  opacity: 1,
-    depth: -2.0 
-  });
-  
   // Initialize components for Routine "Feedback"
   FeedbackClock = new util.Clock();
   feedback_text = new visual.TextStim({
@@ -550,6 +550,8 @@ function RecallRoutineBegin(snapshot) {
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
+    psychoJS.eventManager.clearKeys();
+    inputText = '';
     // keep track of which components have finished
     RecallComponents = [];
     RecallComponents.push(recall_text);
@@ -582,6 +584,16 @@ function RecallRoutineEachFrame(snapshot) {
       recall_text.setAutoDraw(true);
     }
 
+    
+    // *inputDisplay* updates
+    if (t >= 0 && inputDisplay.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      inputDisplay.tStart = t;  // (not accounting for frame time here)
+      inputDisplay.frameNStart = frameN;  // exact frame index
+      
+      inputDisplay.setAutoDraw(true);
+    }
+
     keys = psychoJS.eventManager.getKeys()
     n = keys.length
     i = 0
@@ -609,16 +621,6 @@ function RecallRoutineEachFrame(snapshot) {
         inputDisplay.setText(inputText);
     }
     
-    
-    // *inputDisplay* updates
-    if (t >= 0 && inputDisplay.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      inputDisplay.tStart = t;  // (not accounting for frame time here)
-      inputDisplay.frameNStart = frameN;  // exact frame index
-      
-      inputDisplay.setAutoDraw(true);
-    }
-
     // check for quit (typically the Esc key)
     if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
       return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
@@ -669,8 +671,8 @@ function RecallRoutineEnd(snapshot) {
     psychoJS.experiment.addData("response", inputText);
     
     allResponses.push(correct);
-    inputText = '';
     inputDisplay.setText(inputText);
+    inputText = '';
     // the Routine "Recall" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
