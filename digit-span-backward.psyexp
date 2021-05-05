@@ -170,7 +170,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="" valType="str"/>
+        <Param name="text" updates="constant" val=" " valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
@@ -179,7 +179,7 @@
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="curr_digit = '';" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="// Convert sequence to list&amp;#10;nList = digits.toString().split('').map((x)=&gt;Number(x));&amp;#10;curr_digit = '';" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="// Convert sequence to list&amp;#10;nList = digits.toString().split('').map((x)=&gt;Number(x));&amp;#10;curr_digit = '';&amp;#10;pres_text.setText(curr_digit);&amp;#10;" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="# Convert sequence to list&amp;#10;nList = list(str(digits))&amp;#10;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="JS" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>

@@ -131,7 +131,7 @@ function experimentInit() {
   pres_text = new visual.TextStim({
     win: psychoJS.window,
     name: 'pres_text',
-    text: '',
+    text: ' ',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0,
@@ -434,6 +434,8 @@ function PresentationRoutineBegin(snapshot) {
     // Convert sequence to list
     nList = digits.toString().split('').map((x)=>Number(x));
     curr_digit = '';
+    pres_text.setText(curr_digit);
+    
     // keep track of which components have finished
     PresentationComponents = [];
     PresentationComponents.push(fixation);
