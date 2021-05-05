@@ -178,8 +178,8 @@
         <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="// Convert sequence to list&amp;#10;nList = digits.toString().split('').map((i)=&gt;Number(i))" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="pres_text.text = '';" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="// Convert sequence to list&amp;#10;nList = digits.toString().split('').map((i)=&gt;Number(i));&amp;#10;pres_text.text = '';" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="# Convert sequence to list&amp;#10;nList = list(str(digits))&amp;#10;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="JS" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
