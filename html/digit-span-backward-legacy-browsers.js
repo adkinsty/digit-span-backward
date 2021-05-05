@@ -84,7 +84,6 @@ var PresentationClock;
 var fixation;
 var pres_text;
 var curr_digit;
-var digits;
 var RecallClock;
 var recall_text;
 var inputDisplay;
@@ -141,7 +140,7 @@ function experimentInit() {
   });
   
   curr_digit = '';
-  digits = '';
+  
   // Initialize components for Routine "Recall"
   RecallClock = new util.Clock();
   recall_text = new visual.TextStim({
